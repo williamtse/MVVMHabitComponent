@@ -1,7 +1,7 @@
 package com.goldze.home.ui.fragment;
 
-import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -13,7 +13,9 @@ import com.goldze.base.router.RouterFragmentPath;
 import com.goldze.home.BR;
 import com.goldze.home.R;
 import com.goldze.home.databinding.FragmentHomeBinding;
+import com.goldze.home.ui.adapter.HomeViewModelFactory;
 import com.goldze.home.ui.viewmodel.HomeViewModel;
+import com.goldze.home.ui.viewmodel.ViewPagerItemViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 import me.goldze.mvvmhabit.utils.ToastUtils;
@@ -50,4 +52,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             }
         });
     }
+
+    @Override
+    public HomeViewModel initViewModel() {
+        //使用自定义的ViewModelFactory来创建ViewModel，如果不重写该方法，则默认会调用NetWorkViewModel(@NonNull Application application)构造方法
+        HomeViewModelFactory factory = HomeViewModelFactory.getInstance(getActivity().getApplication());
+        return ViewModelProviders.of(this, factory).get(HomeViewModel.class);
+    }
+
 }

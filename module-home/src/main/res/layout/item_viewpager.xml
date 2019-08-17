@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-        <import type="com.goldze.home.ui.viewmodel.ViewPagerItemViewModel" />
-
         <variable
             name="viewModel"
-            type="ViewPagerItemViewModel" />
+            type="com.goldze.home.ui.viewmodel.ViewPagerItemViewModel" />
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers"/>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:binding="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:selectableItemBackground"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            binding:onClickCommand="@{viewModel.onClick}"
-            android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:text="@{viewModel.text}" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/act_recycler_variety_recycler"
+                android:layout_width="match_parent"
+                android:background="#d3d3d3"
+                android:layout_height="match_parent"
+                binding:itemBinding="@{viewModel.onItemBind}"
+                binding:items="@{viewModel.observableList}"
+                binding:layoutManager="@{LayoutManagers.linear()}"
+                binding:lineManager="@{LineManagers.both()}"
+                />
+
+        </RelativeLayout>
 </layout>

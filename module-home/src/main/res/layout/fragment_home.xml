@@ -21,14 +21,15 @@
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/colorPrimaryDark"
             app:tabSelectedTextColor="@color/colorPrimaryDark"
-            app:tabTextColor="@android:color/black" />
+            app:tabTextColor="@android:color/black"
+            app:tabMode="scrollable"/>
 
         <View style="@style/ViewLineStyle" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             binding:adapter="@{viewModel.adapter}"
             binding:itemBinding="@{viewModel.itemBinding}"
