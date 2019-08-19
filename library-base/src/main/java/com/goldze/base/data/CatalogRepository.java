@@ -56,6 +56,12 @@ public class CatalogRepository extends BaseModel implements HttpDataSource, Loca
         return mHttpDataSource.getCategories();
     }
 
+    @Override
+    public Observable<BaseResponse<CatelogEntity>> getSubCategories(int parentId) {
+        return mHttpDataSource.getSubCategories(parentId);
+    }
+
+
 
     @Override
     public void saveUserName(String userName) {

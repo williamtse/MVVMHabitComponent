@@ -9,6 +9,16 @@ public class CatelogEntity {
     private int id;
     private String title;
     private int parentId;
+    private String icon;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     private List<ItemsEntity> items;
 
     public List<ItemsEntity> getItems() {
@@ -47,6 +57,7 @@ public class CatelogEntity {
         private int id;
         private String title;
         private int parentId;
+        private String icon;
         @Override
         public int describeContents() {
             return 0;
@@ -57,6 +68,7 @@ public class CatelogEntity {
             parcel.writeInt(this.id);
             parcel.writeInt(this.parentId);
             parcel.writeString(this.title);
+            parcel.writeString(this.icon);
         }
 
         public int getId() {
@@ -71,8 +83,15 @@ public class CatelogEntity {
             return title;
         }
 
+        public String getIcon(){
+            return icon;
+        }
+
         public void setTitle(String title) {
             this.title = title;
+        }
+        public void setIcon(String icon){
+            this.icon = icon;
         }
 
         public int getParentId() {

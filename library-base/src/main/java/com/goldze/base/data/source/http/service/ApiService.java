@@ -4,7 +4,9 @@ import com.goldze.base.entity.CatelogEntity;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.http.BaseResponse;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by goldze on 2017/6/15.
@@ -20,4 +22,7 @@ public interface ApiService {
 
     @GET("/mock/categories")
     Observable<BaseResponse<CatelogEntity>> getCategories();
+
+    @GET("/mock/categories/{parentId}/subs")
+    Observable<BaseResponse<CatelogEntity>> getSubCategories(@Path("parentId") int parentId);
 }

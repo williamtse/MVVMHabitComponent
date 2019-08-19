@@ -20,4 +20,5 @@ public interface HttpDataSource {
 //    Observable<BaseResponse<DemoEntity>> demoPost(String catalog);
 
     Observable<BaseResponse<CatelogEntity>> getCategories();
+    Observable<BaseResponse<CatelogEntity>> getSubCategories(int parentId);
 }

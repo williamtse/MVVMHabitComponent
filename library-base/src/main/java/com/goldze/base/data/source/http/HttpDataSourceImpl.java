@@ -47,4 +47,8 @@ public class HttpDataSourceImpl implements HttpDataSource {
         KLog.e("HttpDataSourceImpl.getCategories");
         return apiService.getCategories();
     }
+    @Override
+    public Observable<BaseResponse<CatelogEntity>> getSubCategories(int parentId){
+        return apiService.getSubCategories(parentId);
+    }
 }

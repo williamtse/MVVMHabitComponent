@@ -57,7 +57,10 @@ public class HomeViewModel extends BaseViewModel<CatalogRepository> {
                         KLog.e(response.getResult());
                         if (response.isOk()) {
                             for (CatelogEntity.ItemsEntity entity : response.getResult().getItems()) {
-                                ViewPagerItemViewModel itemViewModel = new ViewPagerItemViewModel(HomeViewModel.this, entity);
+                                ViewPagerItemViewModel itemViewModel = new ViewPagerItemViewModel(
+                                        HomeViewModel.this,
+                                        model,
+                                        entity);
                                 //双向绑定动态添加Item
                                 items.add(itemViewModel);
                             }
@@ -75,6 +78,8 @@ public class HomeViewModel extends BaseViewModel<CatalogRepository> {
                     }
                 });
     }
+
+
 
     //给ViewPager添加ObservableList
     public ObservableList<ViewPagerItemViewModel> items = new ObservableArrayList<>();

@@ -10,21 +10,34 @@
         <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers"/>
     </data>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/act_recycler_variety_recycler"
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/refreshLayout"
                 android:layout_width="match_parent"
-                android:background="#d3d3d3"
                 android:layout_height="match_parent"
-                binding:itemBinding="@{viewModel.onItemBind}"
-                binding:items="@{viewModel.observableList}"
-                binding:layoutManager="@{LayoutManagers.linear()}"
-                binding:lineManager="@{LineManagers.both()}"
-                />
+                app:srlAccentColor="#00000000"
+                app:srlPrimaryColor="#00000000"
+                app:srlEnablePreviewInEditMode="true"
+                app:onSmartRefreshCommend="@{viewModel.refreslistener}"
+                >
+                <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        </RelativeLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/act_recycler_variety_recycler"
+                        android:layout_width="match_parent"
+                        android:background="#f8f8f8"
+                        android:layout_height="match_parent"
+                        binding:itemBinding="@{viewModel.onItemBind}"
+                        binding:items="@{viewModel.observableList}"
+                        binding:layoutManager="@{LayoutManagers.linear()}"
+                        binding:lineManager="@{LineManagers.both()}"
+                        />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </LinearLayout>
 </layout>
